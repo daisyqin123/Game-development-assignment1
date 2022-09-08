@@ -1,2 +1,0 @@
-m_EditorVersion: 2022.1.8
-22207082AC
