@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 77a88505b4e8a8a40a6c699c5579483b
+guid: 6e20e562e052c9447861cc9ce630a5ef
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -106,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PacStudent_0
+      name: Ghost2-angry_0
       rect:
         serializedVersion: 2
-        x: 213
-        y: 4053
-        width: 414
-        height: 318
+        x: 96
+        y: 897
+        width: 177
+        height: 204
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -120,20 +120,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42be9c37b6995d941ac01782395548b5
-      internalID: -744679175
+      spriteID: 2d2c1127bf047d34a8cbbbe84e2d5434
+      internalID: 1730039119
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PacStudent_1
+      name: Ghost2-angry_2
       rect:
         serializedVersion: 2
-        x: 3286
-        y: 4053
-        width: 412
-        height: 318
+        x: 477
+        y: 890
+        width: 220
+        height: 214
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,20 +141,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ad38ef0fa6ee7a4fb7c74248a01033a
-      internalID: -1378212195
+      spriteID: 637a4e0894240c84ca39a8742728574d
+      internalID: 221341833
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PacStudent_2
+      name: Ghost2-angry_4
       rect:
         serializedVersion: 2
-        x: 1749
-        y: 2517
-        width: 414
-        height: 317
+        x: 873
+        y: 892
+        width: 185
+        height: 191
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,20 +162,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0732457f84580154d854027da964f50d
-      internalID: 1901461003
+      spriteID: 7592d6fea49f13246a2b116c73578dcd
+      internalID: -1233048776
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PacStudent_3
+      name: Ghost2-angry_9
       rect:
         serializedVersion: 2
-        x: 2517
-        y: 1749
-        width: 414
-        height: 318
+        x: 102
+        y: 521
+        width: 199
+        height: 163
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,20 +183,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 25acf31322e84e44aab6ac5fdddde0ee
-      internalID: 727981319
+      spriteID: 580357d5daea7ca4da40bfef32159165
+      internalID: 1932145598
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PacStudent_4
+      name: Ghost2-angry_11
       rect:
         serializedVersion: 2
-        x: 982
-        y: 213
-        width: 412
-        height: 317
+        x: 462
+        y: 527
+        width: 191
+        height: 178
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,8 +204,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4fced2d6c843d9642b940e5542c1bb4f
-      internalID: -1595885290
+      spriteID: ecb3da9e6a6fc17409168eb5b01bd71c
+      internalID: 1116552715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost2-angry_13
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 542
+        width: 199
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c55b73ac63f07d14182917cba4d469fc
+      internalID: 480612861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost2-angry_18
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 151
+        width: 199
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2859b33cc081944a80e3cb5daffdecf
+      internalID: 391465954
       vertices: []
       indices: 
       edges: []
@@ -221,11 +263,27 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PacStudent_2: 1901461003
-      PacStudent_4: -1595885290
-      PacStudent_3: 727981319
-      PacStudent_1: -1378212195
-      PacStudent_0: -744679175
+      Ghost2-angry_6: 1224045547
+      Ghost2-angry_14: 1777837970
+      Ghost2-angry_19: 1886249925
+      Ghost2-angry_16: -1221968558
+      Ghost2-angry_18: 391465954
+      Ghost2-angry_10: -1811897456
+      Ghost2-angry_13: 480612861
+      Ghost2-angry_3: -1444460595
+      Ghost2-angry_8: 714900266
+      Ghost2-angry_4: -1233048776
+      Ghost2-angry_9: 1932145598
+      Ghost2-angry_2: 221341833
+      Ghost2-angry_0: 1730039119
+      Ghost2-angry_15: -695858271
+      Ghost2-angry_5: -1413870903
+      Ghost2-angry_12: -622574904
+      Ghost2-angry_1: 1662254929
+      Ghost2-angry_7: 1651885884
+      Ghost2-angry_17: -1050899943
+      Ghost2-angry_20: 1182860945
+      Ghost2-angry_11: 1116552715
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 77a88505b4e8a8a40a6c699c5579483b
+guid: a1856b1200e9f1f46ab8af6129969935
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -106,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PacStudent_0
+      name: Ghost4-normal_0
       rect:
         serializedVersion: 2
-        x: 213
-        y: 4053
-        width: 414
-        height: 318
+        x: 120
+        y: 906
+        width: 114
+        height: 108
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -120,20 +120,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42be9c37b6995d941ac01782395548b5
-      internalID: -744679175
+      spriteID: 64e1517d35718324798d3018e4134e60
+      internalID: 1954519832
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PacStudent_1
+      name: Ghost4-normal_1
       rect:
         serializedVersion: 2
-        x: 3286
-        y: 4053
-        width: 412
-        height: 318
+        x: 504
+        y: 906
+        width: 114
+        height: 99
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,20 +141,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ad38ef0fa6ee7a4fb7c74248a01033a
-      internalID: -1378212195
+      spriteID: 20121ad514bd35647ac209fccb078964
+      internalID: -811409948
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PacStudent_2
+      name: Ghost4-normal_2
       rect:
         serializedVersion: 2
-        x: 1749
-        y: 2517
-        width: 414
-        height: 317
+        x: 888
+        y: 906
+        width: 111
+        height: 99
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,20 +162,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0732457f84580154d854027da964f50d
-      internalID: 1901461003
+      spriteID: 95e802169599a114d80444b3e75653e8
+      internalID: -718925997
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PacStudent_3
+      name: Ghost4-normal_3
       rect:
         serializedVersion: 2
-        x: 2517
-        y: 1749
-        width: 414
-        height: 318
+        x: 120
+        y: 522
+        width: 84
+        height: 99
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,20 +183,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 25acf31322e84e44aab6ac5fdddde0ee
-      internalID: 727981319
+      spriteID: b5325ba5a51cde749b93d1056a7fb5ac
+      internalID: -1690408450
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PacStudent_4
+      name: Ghost4-normal_4
       rect:
         serializedVersion: 2
-        x: 982
-        y: 213
-        width: 412
-        height: 317
+        x: 504
+        y: 534
+        width: 84
+        height: 87
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,8 +204,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4fced2d6c843d9642b940e5542c1bb4f
-      internalID: -1595885290
+      spriteID: 2fada4b3c8825814095973627d6fbc03
+      internalID: 776245457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost4-normal_5
+      rect:
+        serializedVersion: 2
+        x: 888
+        y: 555
+        width: 84
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d5d5b813b1e7cb4ab1760cf6fa68c63
+      internalID: -1527137108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost4-normal_6
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 171
+        width: 57
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0f79a652cdd01f4da61042bd03e0f4d
+      internalID: -1254442451
       vertices: []
       indices: 
       edges: []
@@ -221,11 +263,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PacStudent_2: 1901461003
-      PacStudent_4: -1595885290
-      PacStudent_3: 727981319
-      PacStudent_1: -1378212195
-      PacStudent_0: -744679175
+      Ghost4-normal_1: -811409948
+      Ghost4-normal_0: 1954519832
+      Ghost4-normal_4: 776245457
+      Ghost4-normal_5: -1527137108
+      Ghost4-normal_3: -1690408450
+      Ghost4-normal_2: -718925997
+      Ghost4-normal_6: -1254442451
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 
