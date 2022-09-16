@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
         AddPlayerTween();
         if (activeTween != null)
         {
-           // checkDirection(); // Controls animator
+            checkDirection(); // Controls animator
 
             // Cubic easing-in interpolation
             float time = (Time.time - activeTween.StartTime) / activeTween.Duration;
@@ -74,30 +74,31 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    //public void checkDirection()
-    //{
-    //    if (pos.y > activeTween.EndPos.y) // Down
-    //    {
-    //        animatorController.SetInteger("Move", 3);
-    //    }
+    public void checkDirection()
+    {
+        if (pos.y > activeTween.EndPos.y) // go down
+        {
+            animatorController.SetInteger("move", 0);
+        }
+        if (pos.x < activeTween.EndPos.x) // go right
+        {
+            animatorController.SetInteger("move", 3);
+        }
 
-    //    if (pos.x > activeTween.EndPos.x) // Left
-    //    {
-    //        animatorController.SetInteger("Move", 0);
-    //       // activeTween.Target.transform.localScale = new Vector3(-2.2f, 2.2f, 0);
-    //    }
+        if (pos.x > activeTween.EndPos.x) //go  Left
+        {
+            animatorController.SetInteger("move", 1);
+           // activeTween.Target.transform.localScale = new Vector3(-2.2f, 2.2f, 0);
+        }
 
-    //    if (pos.y < activeTween.EndPos.y) // Up
-    //    {
-    //        animatorController.SetInteger("Move", 1);
-    //        //activeTween.Target.transform.localScale = new Vector3(2.2f, 2.2f, 0);
-    //    }
+        if (pos.y < activeTween.EndPos.y) // go Up
+        {
+            animatorController.SetInteger("move", 2);
+           // activeTween.Target.transform.localScale = new Vector3(2.2f, 2.2f, 0);
+        }
 
-    //    if (pos.x < activeTween.EndPos.x) // Down
-    //    {
-    //        animatorController.SetInteger("Move", 2);
-    //    }
-    //}
+        
+    }
 
 }
 
