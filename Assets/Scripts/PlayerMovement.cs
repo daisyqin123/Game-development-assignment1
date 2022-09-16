@@ -8,8 +8,8 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     private GameObject player;
-    private PlayerTween activeTween;
-    private Vector3 pos;
+    private PlayerTween activePlayerTween;
+    private Vector3 p;
 
     // Start is called before the first frame update
     void Start()
@@ -20,81 +20,85 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        AddPlayerTween();
-        if (activeTween != null)
-        {
-            checkDirection(); // Controls animator
-
-            // Cubic easing-in interpolation
-            float time = (Time.time - activeTween.StartTime) / activeTween.Duration;
-            float timeFraction = time * time * time;
-
-            // Distance between current object's position and the EndPos not "StartPos"
-            float dist = Vector3.Distance(activeTween.Target.position, activeTween.EndPos);
-
-            if (dist > 0.1f)
+      
+            if (activePlayerTween == null)
             {
-                activeTween.Target.transform.position = Vector3.Lerp(activeTween.StartPos, activeTween.EndPos, timeFraction);
+            // go Right
+            if (p.x == -9 && p.y == 3) 
+                {
+                activePlayerTween = new PlayerTween(player.transform, player.transform.position, new Vector3(-4.0f, 3.0f, 0.0f), Time.time, 1.5f);
+                }
+            // go Down
+            if (p.x == -4 && p.y == 3) 
+                {
+                activePlayerTween = new PlayerTween(player.transform, player.transform.position, new Vector3(-4.0f, -1.0f, 0.0f), Time.time, 1.5f);
+                }
+            // go Left
+            if (p.x == -4 && p.y == -1) 
+                {
+                activePlayerTween = new PlayerTween(player.transform, player.transform.position, new Vector3(-9.0f, -1.0f, 0.0f), Time.time, 1.5f);
+                }
+            // go Up
+            if (p.x == -9 && p.y == -1)
+                {
+                activePlayerTween = new PlayerTween(player.transform, player.transform.position, new Vector3(-9.0f, 3.0f, 0.0f), Time.time, 1.5f);
+                }
+
+
             }
-            if (dist < 0.1f)
-            {         
-                activeTween.Target.position = activeTween.EndPos;
-                activeTween = null;
+        
+        if (activePlayerTween != null)
+        {
+           // Controls UI animator
+            dicideAnimation(); 
+
+            // interpolation
+            float time = (Time.time - activePlayerTween.StartTime) / activePlayerTween.Duration;
+            float timeF = time * time * time;
+
+            // Distance ( current object's -EndPos)
+            float distance = Vector3.Distance(activePlayerTween.Target.position, activePlayerTween.EndPos);
+
+            if (distance > 0.1f)
+            {
+                activePlayerTween.Target.transform.position = Vector3.Lerp(activePlayerTween.StartPos, activePlayerTween.EndPos, timeF);
+            }
+            if (distance < 0.1f)
+            {
+                activePlayerTween.Target.position = activePlayerTween.EndPos;
+                activePlayerTween = null;
             }
 
         }
-
-        pos = player.transform.position; // Get position of player
+        //the position of player
+        p = player.transform.position; 
     }
 
-    public void AddPlayerTween()
+   
+
+    public void dicideAnimation()
     {
-        if (activeTween == null)
-        {
-            if (pos.x == -9 && pos.y == 3) // Move Right
-            {
-                activeTween = new PlayerTween(player.transform, player.transform.position, new Vector3(-4.0f, 3.0f, 0.0f), Time.time, 1.5f);
-            }
-            if (pos.x == -4 && pos.y == 3) // Move Down
-            {
-                activeTween = new PlayerTween(player.transform, player.transform.position, new Vector3(-4.0f, -1.0f, 0.0f), Time.time, 1.5f);
-            }
-
-            if (pos.x == -4 && pos.y == -1) // Move Left
-            {
-                activeTween = new PlayerTween(player.transform, player.transform.position, new Vector3(-9.0f, -1.0f, 0.0f), Time.time, 1.5f);
-            }
-
-            if (pos.x == -9 && pos.y == -1) // Move Up
-            {
-                activeTween = new PlayerTween(player.transform, player.transform.position, new Vector3(-9.0f, 3.0f, 0.0f), Time.time, 1.5f);
-            }
-
-            
-        }
-    }
-
-    public void checkDirection()
-    {
-        if (pos.y > activeTween.EndPos.y) // go down
+        // go down
+        if (p.y > activePlayerTween.EndPos.y) 
         {
             animatorController.SetInteger("move", 0);
         }
-        if (pos.x < activeTween.EndPos.x) // go right
+        // go right
+        if (p.x < activePlayerTween.EndPos.x)
         {
             animatorController.SetInteger("move", 3);
         }
-
-        if (pos.x > activeTween.EndPos.x) //go  Left
+        //go  Left
+        if (p.x > activePlayerTween.EndPos.x)
         {
             animatorController.SetInteger("move", 1);
-           // activeTween.Target.transform.localScale = new Vector3(-2.2f, 2.2f, 0);
+        
         }
-
-        if (pos.y < activeTween.EndPos.y) // go Up
+        // go Up
+        if (p.y < activePlayerTween.EndPos.y) 
         {
             animatorController.SetInteger("move", 2);
-           // activeTween.Target.transform.localScale = new Vector3(2.2f, 2.2f, 0);
+           
         }
 
         
