@@ -24,24 +24,24 @@ public class PlayerMovement : MonoBehaviour
             if (activePlayerTween == null)
             {
             // go Right
-            if (p.x == -9 && p.y == 3) 
+            if (p.x == 1 && p.y == 0) 
                 {
-                activePlayerTween = new PlayerTween(player.transform, player.transform.position, new Vector3(-4.0f, 3.0f, 0.0f), Time.time, 1.5f);
+                activePlayerTween = new PlayerTween(player.transform, player.transform.position, new Vector3(6.0f, 0.0f, 0.0f), Time.time, 1.5f);
                 }
             // go Down
-            if (p.x == -4 && p.y == 3) 
+            if (p.x == 6 && p.y == 0) 
                 {
-                activePlayerTween = new PlayerTween(player.transform, player.transform.position, new Vector3(-4.0f, -1.0f, 0.0f), Time.time, 1.5f);
+                activePlayerTween = new PlayerTween(player.transform, player.transform.position, new Vector3(6.0f, -4.0f, 0.0f), Time.time, 1.5f);
                 }
             // go Left
-            if (p.x == -4 && p.y == -1) 
+            if (p.x == 6 && p.y == -4) 
                 {
-                activePlayerTween = new PlayerTween(player.transform, player.transform.position, new Vector3(-9.0f, -1.0f, 0.0f), Time.time, 1.5f);
+                activePlayerTween = new PlayerTween(player.transform, player.transform.position, new Vector3(1.0f, -4.0f, 0.0f), Time.time, 1.5f);
                 }
             // go Up
-            if (p.x == -9 && p.y == -1)
+            if (p.x == 1 && p.y == -4)
                 {
-                activePlayerTween = new PlayerTween(player.transform, player.transform.position, new Vector3(-9.0f, 3.0f, 0.0f), Time.time, 1.5f);
+                activePlayerTween = new PlayerTween(player.transform, player.transform.position, new Vector3(1.0f, 0.0f, 0.0f), Time.time, 1.5f);
                 }
 
 
