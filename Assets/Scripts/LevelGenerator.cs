@@ -122,7 +122,7 @@ public class LevelGenerator : MonoBehaviour
         // Instantiate the rest of the grids. Place within the LevelManager as a child. 
         GameObject.Instantiate(gameObject.transform.GetChild(1), new Vector2(27, 0), Quaternion.Euler(0, 180, 0), gameObject.transform.GetChild(1).parent);
         GameObject.Instantiate(gameObject.transform.GetChild(1), new Vector2(27, -28), Quaternion.Euler(-180, 180, 0), gameObject.transform.GetChild(1).parent);
-        GameObject.Instantiate(gameObject.transform.GetChild(1), new Vector2(0, -28), Quaternion.Euler(-180, 0, 0), gameObject.transform.GetChild(1).parent);
+        GameObject.Instantiate(gameObject.transform.GetChild(1), new Vector2(1, -28), Quaternion.Euler(-180, 0, 0), gameObject.transform.GetChild(1).parent);
     }
 
     // Update is called once per frame
