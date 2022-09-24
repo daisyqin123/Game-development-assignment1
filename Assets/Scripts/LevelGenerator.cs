@@ -108,7 +108,7 @@ public class LevelGenerator : MonoBehaviour
         }
 
         // Deactive all LevelSprites game objects in LevelManager after instantiating 
-        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+       // gameObject.transform.GetChild(0).gameObject.SetActive(false);
         
         //Debug.Log(gameObject.transform.childCount);
 
