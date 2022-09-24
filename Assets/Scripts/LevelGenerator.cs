@@ -54,16 +54,20 @@ public class LevelGenerator : MonoBehaviour
                     // Rotating outside corners
                     if (tileNum == 1)
                     {
-                        if (row == 9 && col == 0) { rotNum += 90; }
-                        if (row == 9 && col == 5) { rotNum -= 90; }
-                        if (row == 13) { rotNum += 180; }
+                        if (row == 9 && col == 0) { rotNum += 180; }
+                        if (row == 0 && col == 0) { rotNum += 90; }
+                       
                         rotateTile.transform.Rotate(0f, 0f, rotNum);
                     }
 
                     // Rotating outside walls
-                    if (tileNum == 2) { 
-                        if(row >= 1 && row <= 8 || row >= 10 && row <= 12)
+                    if (tileNum == 2) {
+                        if (row == 0 ||  row == 13)
                             rotateTile.transform.Rotate(0f, 0f, 90f);
+                        if (row >= 1 && row <= 8 || row >= 10 && row <= 12)
+                            rotateTile.transform.Rotate(0f, 0f, 180f);
+                        if (row == 9)
+                            rotateTile.transform.Rotate(0f, 0f, 270f);
                     }
 
                     // Rotating inside corners
@@ -74,6 +78,9 @@ public class LevelGenerator : MonoBehaviour
                         if (row == 6 && (col == 5 || col == 8)) { rotNum = 270; }
                         if (row == 7 && col == 13) { rotNum = 270; }
                         if (row == 9 && col == 11) { rotNum = 270; }
+
+                        if (row == 9 && col == 5) { rotNum = 270; }
+                        if (row == 13 && col == 5) { rotNum = 180; }
 
                         // Rotate inside corners - bottom-left
                         if ((row == 4 || row == 10) && (col == 2 || col == 7 || col == 13)) { rotNum = 90; }
