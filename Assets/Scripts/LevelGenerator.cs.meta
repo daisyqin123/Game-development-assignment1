@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 218374fc52f25104f99ab9beb5456ebe
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - outsideCorner: {fileID: 705953977406011186, guid: 617b0d1ace501fd49b08ab2674abd264, type: 3}
+  - outsideWall: {instanceID: 0}
+  - insideCorner: {instanceID: 0}
+  - insideWall: {instanceID: 0}
+  - standardPallet: {instanceID: 0}
+  - powerPallet: {instanceID: 0}
+  - tJunction: {instanceID: 0}
+  - levelParent: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
