@@ -47,7 +47,12 @@ public class GameManager : MonoBehaviour
 
     private void ResetState()
     {
-       
+        for (int i = 0; i < ghosts.Length; i++)
+        {
+            ghosts[i].ResetState();
+        }
+
+        pacman.ResetState();
     }
 
     private void GameOver()
@@ -94,10 +99,44 @@ public class GameManager : MonoBehaviour
         ghostMultiplier++;
     }
 
-  
+    public void PelletEaten(Pellet pellet)
+    {
+        pellet.gameObject.SetActive(false);
 
-   
+        SetScore(score + pellet.points);
 
-    
+        if (!HasRemainingPellets())
+        {
+            pacman.gameObject.SetActive(false);
+            Invoke(nameof(NewRound), 3f);
+        }
+    }
+
+    public void PowerPelletEaten(PowerPellet pellet)
+    {
+
+        PelletEaten(pellet);
+        CancelInvoke(nameof(ResetGhostMultiplier));
+        Invoke(nameof(ResetGhostMultiplier), pellet.duration);
+
+    }
+
+    private bool HasRemainingPellets()
+    {
+        foreach (Transform pellet in pellets)
+        {
+            if (pellet.gameObject.activeSelf)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+    private void ResetGhostMultiplier()
+    {
+        ghostMultiplier = 1;
+    }
+
 
 }

@@ -11,15 +11,16 @@ TagManager:
   - 5
   - 6
   - 7
+  - Node
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Pellet
   - Water
   - UI
-  - 
-  - 
+  - Node
+  - Pacman
   - 
   - 
   - 
