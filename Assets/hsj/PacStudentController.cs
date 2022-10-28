@@ -11,10 +11,16 @@ public class PacStudentController : MonoBehaviour
     public float leftTeloPoint, rightTeloPoint;
     char lastInput = 'A', currentInput = 'A';
     bool trailStarted = false;
+
+    
+
+
     public void initilize()
     {
         animator = GetComponent<Animator>();
         startPos = transform.position;
+
+        
     }
     public void setStartPos()
     {
@@ -24,6 +30,7 @@ public class PacStudentController : MonoBehaviour
     {
         animator.speed = 0; //basically pause here
 
+        
     }
 
 
