@@ -28,14 +28,10 @@ public class CherryController : MonoBehaviour
 
     void startMovement() //create the cherry to move across the screen
     {
-        startPos = Camera.main.ViewportToWorldPoint(new Vector2(1.1f, .5f)); //set the start and end points to be just outside the camera
-        endPos = Camera.main.ViewportToWorldPoint(new Vector2(-0.1f, .5f));
+        startPos = Camera.main.ViewportToWorldPoint(new Vector2(-15.1f, -13.5f)); //set the start and end points to be just outside the camera
+        endPos = Camera.main.ViewportToWorldPoint(new Vector2(15.1f, .13f));
         cherryInstance = Instantiate(cherryPrefab, startPos, Quaternion.identity);//make the cherry
         tween = new Tween(startPos, endPos, Time.time, duration);
     }
-    void changePos() //the actual movement of the cherry across the screen
-    {
-
-        
-    }
+   
 }
