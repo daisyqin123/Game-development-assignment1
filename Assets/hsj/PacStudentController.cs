@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Diagnostics;
+using UnityEngine;
+//using static System.Net.Mime.MediaTypeNames;
+using UnityEngine.UI;
+
 
 public class PacStudentController : MonoBehaviour
 {
@@ -11,8 +15,14 @@ public class PacStudentController : MonoBehaviour
     public float leftTeloPoint, rightTeloPoint;
     char lastInput = 'A', currentInput = 'A';
     bool trailStarted = false;
+  
 
-    
+
+    //int scaredTime = 10, lives = 3;
+    public float levelStartTime;
+
+    //AudioSource pacStudentAudio;
+    //public AudioClip wallCollide;
 
 
     public void initilize()
@@ -29,6 +39,7 @@ public class PacStudentController : MonoBehaviour
     public void pause()
     {
         animator.speed = 0; //basically pause here
+        //pacStudentAudio.Stop();
 
         
     }
@@ -120,13 +131,20 @@ public class PacStudentController : MonoBehaviour
         }
         else if (animator.speed == 1) //only do if in last frame was moving //if nextPos is a wall then stop the player, change audio and play wall particals
         {
-            Debug.Log("撞墙特效");
+            //Debug.Log("hit wall");
 
-            //wallPartical.transform.position = wallHitPoint;
-            //wallPartical.GetComponent<ParticleSystem>().Play();
+            wallPartical.transform.position = wallHitPoint;
+            wallPartical.GetComponent<ParticleSystem>().Play();
             pause();
+
+            //pacStudentAudio.clip = wallCollide;
+            //pacStudentAudio.volume = 2f;
+            //pacStudentAudio.loop = false;
+            //pacStudentAudio.Play();
         }
     }
+   
+  
 
     bool nextPosWall(Vector2 nextPos) //checks if the next position the player is moving too is a wall
     {
@@ -138,13 +156,15 @@ public class PacStudentController : MonoBehaviour
 
     Vector2 setNextPos(int startI, int startJ, char input) //determine the next position the player will be moved too based on the input key given
     {
-        switch (input)
-        {
-            case 'A': return new Vector2(startI - 1, startJ);
-            case 'S': return new Vector2(startI, startJ - 1);
-            case 'W': return new Vector2(startI, startJ + 1);
-            default: return new Vector2(startI + 1, startJ);
-        }
+        
+            switch (input)
+            {
+                case 'A': return new Vector2(startI - 1, startJ);
+                case 'S': return new Vector2(startI, startJ - 1);
+                case 'W': return new Vector2(startI, startJ + 1);
+                default: return new Vector2(startI + 1, startJ);
+            }
+        
     }
 
     void teleport() //when at portal pos move pacStudent to other side of map
@@ -165,22 +185,44 @@ public class PacStudentController : MonoBehaviour
 
     void changePos() //move the player to the specified location
     {
+        if (GameController.instance.gamePlaying)
 
-        float timeFraction = (Time.time - tween.StartTime) / tween.Duration;
-        transform.position = Vector2.Lerp(tween.StartPos, tween.EndPos, timeFraction);
+        {
 
+            float timeFraction = (Time.time - tween.StartTime) / tween.Duration;
+            transform.position = Vector2.Lerp(tween.StartPos, tween.EndPos, timeFraction);
+
+        }
+
+        else
+        {
+            pause();
+        }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("5"))
         {
-            Destroy(collision.gameObject);
+            //plus 10 points
+            Score.scoreValue += 10;
 
+
+            Destroy(collision.gameObject);
+           
+            
         }
         if (collision.CompareTag("6"))
         {
             Destroy(collision.gameObject);
+
+        }
+
+        if (collision.CompareTag("cherry"))
+        {
+            //plus 10 points
+            Score.scoreValue += 100;
+            Destroy(collision.gameObject);
+
         }
     }
 }
