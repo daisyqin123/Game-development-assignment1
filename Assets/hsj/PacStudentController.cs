@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 //using static System.Net.Mime.MediaTypeNames;
 using UnityEngine.UI;
@@ -15,15 +16,19 @@ public class PacStudentController : MonoBehaviour
     public float leftTeloPoint, rightTeloPoint;
     char lastInput = 'A', currentInput = 'A';
     bool trailStarted = false;
-  
 
+    public Animator[] GhostScareds;
+    
 
     //int scaredTime = 10, lives = 3;
     public float levelStartTime;
 
-    //AudioSource pacStudentAudio;
+    public AudioSource pacStudentAudio;
     //public AudioClip wallCollide;
-
+    void Start()
+    {
+        //GhostScareds ;
+    }
 
     public void initilize()
     {
@@ -137,10 +142,7 @@ public class PacStudentController : MonoBehaviour
             wallPartical.GetComponent<ParticleSystem>().Play();
             pause();
 
-            //pacStudentAudio.clip = wallCollide;
-            //pacStudentAudio.volume = 2f;
-            //pacStudentAudio.loop = false;
-            //pacStudentAudio.Play();
+            pacStudentAudio.Play();
         }
     }
    
@@ -214,6 +216,11 @@ private void OnTriggerEnter2D(Collider2D collision)
         if (collision.CompareTag("6"))
         {
             Destroy(collision.gameObject);
+            for (int i = 0; i < GhostScareds.Length; i++)
+            {
+                GhostScareds[i].Play("Ghost1Scared");
+
+            }
 
         }
 
