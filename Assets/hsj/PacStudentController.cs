@@ -6,11 +6,12 @@ using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 //using static System.Net.Mime.MediaTypeNames;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 
 public class PacStudentController : MonoBehaviour
 {
     Tween tween;
+    public GameObject gameOver;
     const float duration = .7f;
     public Animator animator;
     public Animator Pacanimator;
@@ -20,7 +21,7 @@ public class PacStudentController : MonoBehaviour
     public float leftTeloPoint, rightTeloPoint;
     char lastInput = 'A', currentInput = 'A';
     bool trailStarted = false;
-    GameObject gameObjectToMove;
+   // GameObject gameObjectToMove;
 
 
     public Animator[] GhostScareds;
@@ -51,18 +52,25 @@ public class PacStudentController : MonoBehaviour
         live1.gameObject.SetActive(true);
         live2.gameObject.SetActive(true);
         live3.gameObject.SetActive(true);
+        gameOver.gameObject.SetActive(false);
+        
     }
 
     public void initilize()
     {
         animator = GetComponent<Animator>();
+        //startPos.x = 1.0f;
+       // startPos.y = -1.0f;
         startPos = transform.position;
+        //player.transform.position = new vector2(1.0f, -1.0f);
 
-        
+
     }
     public void setStartPos()
     {
-        transform.position = new Vector2(1, 1);
+        //transform.position = new Vector2(1, -1);
+        startPos.x = 1.0f;
+        startPos.y = -1.0f;
     }
     public void pause()
     {
@@ -275,21 +283,31 @@ private void OnTriggerEnter2D(Collider2D collision)
                     live1.gameObject.SetActive(true);
                     live2.gameObject.SetActive(true);
                     live3.gameObject.SetActive(true);
+                    gameOver.gameObject.SetActive(false);
                     break;
                 case 2:
                     live1.gameObject.SetActive(true);
                     live2.gameObject.SetActive(true);
                     live3.gameObject.SetActive(false);
+                    gameOver.gameObject.SetActive(false);
                     break;
                 case 1:
                     live1.gameObject.SetActive(true);
                     live2.gameObject.SetActive(false);
                     live3.gameObject.SetActive(false);
+                    gameOver.gameObject.SetActive(false);
                     break;
                 case 0:
                     live1.gameObject.SetActive(false);
                     live2.gameObject.SetActive(false);
                     live3.gameObject.SetActive(false);
+                    gameOver.gameObject.SetActive(true);
+                    //GameController.timeCounter.text = "Time: 00:00.00";
+                    pause();
+                    //GhostScareds.speed = 0;
+                    transform.position = startPos;
+                    Destroy(GhostScareds[1].gameObject);
+                    SceneManager.LoadScene(0);
                     break;
 
             }
