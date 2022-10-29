@@ -1,4 +1,7 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 //using static System.Net.Mime.MediaTypeNames;
@@ -18,16 +21,23 @@ public class PacStudentController : MonoBehaviour
     bool trailStarted = false;
 
     public Animator[] GhostScareds;
-    
 
+    //Ghost10.9.8.7..1
+    public Text GhostcountdownText;
+    public int GhostcountdownTime;
+    
     //int scaredTime = 10, lives = 3;
     public float levelStartTime;
 
     public AudioSource pacStudentAudio;
+    public AudioSource GhostScaredAudio;
+
+
     //public AudioClip wallCollide;
     void Start()
     {
         //GhostScareds ;
+        GhostcountdownText.gameObject.SetActive(false);
     }
 
     public void initilize()
@@ -219,17 +229,106 @@ private void OnTriggerEnter2D(Collider2D collision)
             for (int i = 0; i < GhostScareds.Length; i++)
             {
                 GhostScareds[i].Play("Ghost1Scared");
-
+                GhostScaredAudio.Play();
             }
+            GhostcountdownText.gameObject.SetActive(true);
+            StartCoroutine(GoastCountdownToStart());
 
         }
 
         if (collision.CompareTag("cherry"))
         {
-            //plus 10 points
+            //plus 100 points
             Score.scoreValue += 100;
             Destroy(collision.gameObject);
 
         }
+    }
+
+
+    IEnumerator GoastCountdownToStart()
+    {
+        // While the countdown time is greater than zero...
+        while ( GhostcountdownTime > 3)
+        {
+            // Set the countdown UI component to the current countdown time integer
+            GhostcountdownText.text = GhostcountdownTime.ToString();
+
+            // Return in exactly 1 second
+            yield return new WaitForSeconds(1f);
+
+            // Decrement the countdown time integer by 1
+            GhostcountdownTime--;
+
+            
+
+        }
+        if (GhostcountdownTime == 3)
+        {
+            // Set the countdown UI component to the current countdown time integer
+            GhostcountdownText.text = GhostcountdownTime.ToString();
+
+            // Return in exactly 1 second
+            yield return new WaitForSeconds(1f);
+
+            // Decrement the countdown time integer by 1
+            GhostcountdownTime--;
+
+            for (int i = 0; i < GhostScareds.Length; i++)
+            {
+                GhostScareds[i].Play("GhostRecover");
+
+            }
+        }
+
+        if (GhostcountdownTime == 2)
+        {
+            // Set the countdown UI component to the current countdown time integer
+            GhostcountdownText.text = GhostcountdownTime.ToString();
+
+            // Return in exactly 1 second
+            yield return new WaitForSeconds(1f);
+
+            // Decrement the countdown time integer by 1
+            GhostcountdownTime--;
+
+            for (int i = 0; i < GhostScareds.Length; i++)
+            {
+                GhostScareds[i].Play("GhostRecover");
+
+            }
+        }
+        if (GhostcountdownTime == 1)
+        {
+            // Set the countdown UI component to the current countdown time integer
+            GhostcountdownText.text = GhostcountdownTime.ToString();
+
+            // Return in exactly 1 second
+            yield return new WaitForSeconds(1f);
+
+            // Decrement the countdown time integer by 1
+            GhostcountdownTime--;
+
+            for (int i = 0; i < GhostScareds.Length; i++)
+            {
+                GhostScareds[i].Play("GhostRecover");
+
+            }
+        }
+        // Once the countdown timer reaches 0, call  
+        for (int i = 0; i < GhostScareds.Length; i++)
+        {
+            GhostScareds[i].Play("GhostNomal");
+
+        }
+
+        
+       
+
+        // Return in exactly 1 second
+        yield return new WaitForSeconds(1f);
+
+        // Disable the countdown UI to hid the "GO!" text
+        GhostcountdownText.gameObject.SetActive(false);
     }
 }
