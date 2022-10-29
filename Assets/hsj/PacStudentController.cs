@@ -13,14 +13,22 @@ public class PacStudentController : MonoBehaviour
     Tween tween;
     const float duration = .7f;
     public Animator animator;
+    public Animator Pacanimator;
     public LayerMask ignorePellet;
     public ParticleSystem wallPartical, deathPartical;
     Vector2 wallHitPoint, startPos;
     public float leftTeloPoint, rightTeloPoint;
     char lastInput = 'A', currentInput = 'A';
     bool trailStarted = false;
+    GameObject gameObjectToMove;
+
 
     public Animator[] GhostScareds;
+    //live
+    public static int liveAmount;
+    public Image live1;
+    public Image live2;
+    public Image live3;
 
     //Ghost10.9.8.7..1
     public Text GhostcountdownText;
@@ -38,6 +46,11 @@ public class PacStudentController : MonoBehaviour
     {
         //GhostScareds ;
         GhostcountdownText.gameObject.SetActive(false);
+        //live
+        liveAmount = 3;
+        live1.gameObject.SetActive(true);
+        live2.gameObject.SetActive(true);
+        live3.gameObject.SetActive(true);
     }
 
     public void initilize()
@@ -243,8 +256,47 @@ private void OnTriggerEnter2D(Collider2D collision)
             Destroy(collision.gameObject);
 
         }
-    }
 
+        if (collision.CompareTag("Ghost"))
+        {
+            Pacanimator.Play("PacDie");
+            //gameObjectToMove.transform.position = new Vector2(1, -1);
+            //GameObject.Find("Player").transform.position = startPos;
+            Score.scoreValue += 300;
+
+            //live
+            liveAmount -= 1;
+
+            if (liveAmount > 3)
+                liveAmount = 3;
+            switch (liveAmount)
+            {
+                case 3:
+                    live1.gameObject.SetActive(true);
+                    live2.gameObject.SetActive(true);
+                    live3.gameObject.SetActive(true);
+                    break;
+                case 2:
+                    live1.gameObject.SetActive(true);
+                    live2.gameObject.SetActive(true);
+                    live3.gameObject.SetActive(false);
+                    break;
+                case 1:
+                    live1.gameObject.SetActive(true);
+                    live2.gameObject.SetActive(false);
+                    live3.gameObject.SetActive(false);
+                    break;
+                case 0:
+                    live1.gameObject.SetActive(false);
+                    live2.gameObject.SetActive(false);
+                    live3.gameObject.SetActive(false);
+                    break;
+
+            }
+            
+        }
+    }
+    
 
     IEnumerator GoastCountdownToStart()
     {
