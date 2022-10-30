@@ -69,7 +69,7 @@ public class PacStudentController : MonoBehaviour
     void Update()
     {
         determineKey();
-        if (tween != null) //if close enough to the end postion determine the next one else continue to the end position
+        if (tween != null) 
         {
             if (Vector2.Distance(new Vector2(transform.position.x, transform.position.y), tween.EndPos) < 0.05f)
                 getNextPos();
@@ -78,13 +78,13 @@ public class PacStudentController : MonoBehaviour
         }
     }
 
-    void determineKey()//get and save the last key that the player has pressed
+    void determineKey()
     {
 
         if (Input.GetKeyDown(KeyCode.A))
         {
             lastInput = 'A';
-            if (currentInput.Equals(null)) //if just starting and input only just choosen
+            if (currentInput.Equals(null)) 
                 currentInput = 'A';
             if (tween == null)
                 getNextPos();
@@ -119,13 +119,13 @@ public class PacStudentController : MonoBehaviour
     void getNextPos()//only do if first a valid key has been pressed
     {
         if (tween != null)
-            transform.position = tween.EndPos; //ensures player at final position before moving to a new one
+            transform.position = tween.EndPos; 
         teleport();
-        int startI = Mathf.RoundToInt(transform.position.x), startJ = Mathf.RoundToInt(transform.position.y); //get player current position as an int
+        int startI = Mathf.RoundToInt(transform.position.x), startJ = Mathf.RoundToInt(transform.position.y); 
         Vector2 nextPos = setNextPos(startI, startJ, lastInput);
-        if (lastInput != currentInput) //only nessesary do if the direction is actually changing
+        if (lastInput != currentInput) 
         {
-            if (!nextPosWall(nextPos)) //allow changing direction if the nextPos is not a wall
+            if (!nextPosWall(nextPos)) 
             {
                 animator.SetTrigger("" + lastInput);
                 currentInput = lastInput;
@@ -302,6 +302,7 @@ private void OnTriggerEnter2D(Collider2D collision)
                     gameOver.gameObject.SetActive(true);
                     tween = null;
                     GameController.instance.gamePlaying = false;
+                    ghost.GetComponent<Animator>().speed = 0;
                     Invoke("ChangeScene", 3);
                   
                     break;
