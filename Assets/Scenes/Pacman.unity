@@ -2633,6 +2633,7 @@ MonoBehaviour:
     m_Bits: 8
   wallPartical: {fileID: 1337230323}
   deathPartical: {fileID: 1226445625}
+  startPos: {x: 0, y: 0}
   leftTeloPoint: 0
   rightTeloPoint: 28
   GhostScareds:
@@ -2648,6 +2649,7 @@ MonoBehaviour:
   levelStartTime: 0
   pacStudentAudio: {fileID: 243187442}
   GhostScaredAudio: {fileID: 289518233}
+  ghost: {fileID: 0}
 --- !u!61 &871955488
 BoxCollider2D:
   m_ObjectHideFlags: 0

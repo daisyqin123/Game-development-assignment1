@@ -17,7 +17,8 @@ public class PacStudentController : MonoBehaviour
     public Animator Pacanimator;
     public LayerMask ignorePellet;
     public ParticleSystem wallPartical, deathPartical;
-    Vector2 wallHitPoint, startPos;
+    Vector2 wallHitPoint;
+    public Vector2 startPos;
     public float leftTeloPoint, rightTeloPoint;
     char lastInput = 'A', currentInput = 'A';
     bool trailStarted = false;
@@ -46,6 +47,8 @@ public class PacStudentController : MonoBehaviour
     void Start()
     {
         //GhostScareds ;
+        animator = GetComponent<Animator>();
+        startPos = transform.position;
         GhostcountdownText.gameObject.SetActive(false);
         //live
         liveAmount = 3;
@@ -56,28 +59,10 @@ public class PacStudentController : MonoBehaviour
         
     }
 
-    public void initilize()
-    {
-        animator = GetComponent<Animator>();
-        //startPos.x = 1.0f;
-       // startPos.y = -1.0f;
-        startPos = transform.position;
-        //player.transform.position = new vector2(1.0f, -1.0f);
-
-
-    }
-    public void setStartPos()
-    {
-        //transform.position = new Vector2(1, -1);
-        startPos.x = 1.0f;
-        startPos.y = -1.0f;
-    }
     public void pause()
     {
         animator.speed = 0; //basically pause here
         //pacStudentAudio.Stop();
-
-        
     }
 
 
@@ -218,13 +203,13 @@ public class PacStudentController : MonoBehaviour
 
     void changePos() //move the player to the specified location
     {
-        if (GameController.instance.gamePlaying)
+        if (GameController.instance.gamePlaying&& tween != null)
 
         {
-
-            float timeFraction = (Time.time - tween.StartTime) / tween.Duration;
-            transform.position = Vector2.Lerp(tween.StartPos, tween.EndPos, timeFraction);
-
+           
+                float timeFraction = (Time.time - tween.StartTime) / tween.Duration;
+                transform.position = Vector2.Lerp(tween.StartPos, tween.EndPos, timeFraction);
+            
         }
 
         else
@@ -232,6 +217,7 @@ public class PacStudentController : MonoBehaviour
             pause();
         }
     }
+    public GameObject ghost;
 private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("5"))
@@ -268,10 +254,9 @@ private void OnTriggerEnter2D(Collider2D collision)
         if (collision.CompareTag("Ghost"))
         {
             Pacanimator.Play("PacDie");
-            //gameObjectToMove.transform.position = new Vector2(1, -1);
-            //GameObject.Find("Player").transform.position = startPos;
+          
             Score.scoreValue += 300;
-
+            ghost = collision.transform.gameObject;
             //live
             liveAmount -= 1;
 
@@ -279,42 +264,60 @@ private void OnTriggerEnter2D(Collider2D collision)
                 liveAmount = 3;
             switch (liveAmount)
             {
-                case 3:
-                    live1.gameObject.SetActive(true);
-                    live2.gameObject.SetActive(true);
-                    live3.gameObject.SetActive(true);
-                    gameOver.gameObject.SetActive(false);
-                    break;
+              
                 case 2:
                     live1.gameObject.SetActive(true);
                     live2.gameObject.SetActive(true);
                     live3.gameObject.SetActive(false);
                     gameOver.gameObject.SetActive(false);
+                    tween = null;
+                    transform.position = startPos;
+                    lastInput = 'A';
+                    currentInput = 'A';
+                    animator.SetTrigger("A");
+                    ghost.GetComponent<Animator>().speed = 0;
+                    Invoke("Recover",2);
+                  
                     break;
                 case 1:
                     live1.gameObject.SetActive(true);
                     live2.gameObject.SetActive(false);
                     live3.gameObject.SetActive(false);
                     gameOver.gameObject.SetActive(false);
+                  
+
+                    tween = null;
+                    transform.position = startPos;
+                    animator.SetTrigger("A");
+                    currentInput = 'A';
+                    lastInput = 'A';
+                    ghost.GetComponent<Animator>().speed = 0;
+                   
+                    Invoke("Recover", 2);
                     break;
                 case 0:
                     live1.gameObject.SetActive(false);
                     live2.gameObject.SetActive(false);
                     live3.gameObject.SetActive(false);
                     gameOver.gameObject.SetActive(true);
-                    //GameController.timeCounter.text = "Time: 00:00.00";
-                    pause();
-                    //GhostScareds.speed = 0;
-                    transform.position = startPos;
-                    Destroy(GhostScareds[1].gameObject);
-                    SceneManager.LoadScene(0);
+                    tween = null;
+                    GameController.instance.gamePlaying = false;
+                    Invoke("ChangeScene", 3);
+                  
                     break;
 
             }
             
         }
     }
-    
+    public void ChangeScene()
+    {
+        SceneManager.LoadScene(0);
+    }
+    public void Recover()
+    {
+        ghost.GetComponent<Animator>().speed =1;
+    }
 
     IEnumerator GoastCountdownToStart()
     {
@@ -385,12 +388,17 @@ private void OnTriggerEnter2D(Collider2D collision)
 
             }
         }
-        // Once the countdown timer reaches 0, call  
-        for (int i = 0; i < GhostScareds.Length; i++)
+        if (GhostcountdownTime == 0)
         {
-            GhostScareds[i].Play("GhostNomal");
+            // Once the countdown timer reaches 0, call  
+            for (int i = 0; i < GhostScareds.Length; i++)
+            {
+                GhostScareds[i].Play("GhostNomal");
 
+            }
+            GhostcountdownTime = 10;
         }
+      
 
         
        

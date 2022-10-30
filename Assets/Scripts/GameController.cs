@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour
     // True if the game is playing, false if it is not
     // Returns false during countdown at beginning and after the last Demon is destroyed
     // Other classes can read this variable, but it can only be set within this class
-    public bool gamePlaying { get; private set; }
+    public bool gamePlaying { get;  set; }
 
     // Number of seconds to count down before starting the game
     public int countdownTime;
