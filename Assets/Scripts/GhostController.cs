@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class GhostController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    Tween tween;
+
+
+    //public GameObject ghost1;
+    //public GameObject ghost2;
+    //public GameObject ghost3;
+    public GameObject ghost4;
+
+
+
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+
+
+
+
     }
 }
